@@ -1,0 +1,16 @@
+{
+  "name": "evernote-test-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "run.js",
+  "author": "alin.roman@zitec.com",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^2.10.2",
+    "evernote": "^1.25.82",
+    "mysql": "^2.9.0",
+    "oauth": "^0.9.14",
+    "sax": "^1.1.4",
+    "stream-dev-tools": "git://github.com/alin-roman-zitec/streams-dev-tools.git#apps"
+  }
+}
