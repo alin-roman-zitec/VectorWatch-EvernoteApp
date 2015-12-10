@@ -62,7 +62,9 @@ Note.prototype.setCheckboxChecked = function(checkboxId, checked) {
     var position = this.checkboxes[checkboxId].position;
     var firstPartReversed = this.xml.substr(0, position).split('').reverse().join('');
     var tagLength = firstPartReversed.match(/^.*?odot-ne\</)[0].length;
-    var newTag = checked ? '<en-todo checked="true">' : '<en-todo>';
+    var selfClosing = firstPartReversed[1] == '/';
+    var tagEnding = selfClosing ? '/>' : '>';
+    var newTag = (checked ? '<en-todo checked="true"' : '<en-todo') + tagEnding;
     var lengthDiff = newTag.length - tagLength;
     this.xml = this.xml.substr(0, position - tagLength) + newTag + this.xml.substr(position);
 
