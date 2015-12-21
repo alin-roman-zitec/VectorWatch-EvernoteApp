@@ -135,7 +135,15 @@ vectorStream.requestConfig = function(resolve, reject, authTokens) {
 };
 
 vectorStream.callMethod = function(resolve, reject, methodName, args, authTokens) {
+    if (!authTokens) {
+        return reject(new Error('Invalid auth tokens.'), 901);
+    }
+
     callMethod(methodName, args, authTokens).then(resolve).catch(function(err) {
+        return err instanceof Evernote.EDAMUserException;
+    }, function(err) {
+        reject(err, 901);
+    }).catch(function(err) {
         console.log(util.inspect(err, { colors: true, depth: null }));
         reject(err);
     });
